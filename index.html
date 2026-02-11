@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BitLife</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app">
+        <!-- Header -->
+        <header class="top-bar">
+            <div class="header-left">
+                <h1 id="characterNameHeader">BitLife</h1>
+                <button class="age-button" id="ageButton">👤 Age: <span id="ageValue">0</span></button>
+            </div>
+            <div class="health-bar-top">
+                <div class="health-bar-indicator">
+                    <div class="health-fill" id="healthTopBar" style="width: 100%"></div>
+                </div>
+            </div>
+            <button class="btn-menu" id="settingsBtn">⚙️</button>
+        </header>
+
+        <!-- Activities Navigation Bar -->
+        <nav class="activities-nav">
+            <button class="activity-btn active" data-tab="life" data-icon="🌟">Life</button>
+            <button class="activity-btn" data-tab="school" data-icon="📚">School</button>
+            <button class="activity-btn" data-tab="work" data-icon="💼">Work</button>
+            <button class="activity-btn" data-tab="health" data-icon="❤️">Health</button>
+            <button class="activity-btn" data-tab="relationships" data-icon="❤️">Relationships</button>
+            <button class="activity-btn" data-tab="stats" data-icon="📊">Stats</button>
+            <button class="activity-btn" data-tab="more" data-icon="📋">More</button>
+        </nav>
+
+        <!-- Main Container -->
+        <main class="main-content">
+            <!-- LIFE TAB -->
+            <section class="tab-content active" data-tab="life">
+                <div class="card main-card">
+                    <div class="event-content">
+                        <div class="life-stage-badge" id="lifeStageBadge">🍼 Childhood</div>
+                        <h2 id="eventTitle" class="event-title">Starting Your Life</h2>
+                        <p id="eventDescription" class="event-text">Your life is beginning. Make choices that will shape your destiny...</p>
+                    </div>
+                    <div class="choices-container" id="choicesContainer">
+                        <button class="choice-button" onclick="game.makeChoice(0)">
+                            <span class="choice-text">Start your journey</span>
+                            <span class="choice-arrow">→</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Quick Actions -->
+                <div class="card">
+                    <h3>⚡ Quick Actions</h3>
+                    <p style="font-size: 13px; color: #666; margin-bottom: 12px;">Do something this year</p>
+                    <div class="quick-actions-grid">
+                        <button class="quick-action-btn" onclick="game.doActivity('study')" title="Study Hard">📖 Study</button>
+                        <button class="quick-action-btn" onclick="game.doActivity('gym')" title="Go to Gym">🏋️ Gym</button>
+                        <button class="quick-action-btn" onclick="game.doActivity('work_overtime')" title="Work Overtime">⏰ Work</button>
+                        <button class="quick-action-btn" onclick="game.doActivity('rest')" title="Get Rest">😴 Rest</button>
+                        <button class="quick-action-btn" onclick="game.doActivity('party')" title="Throw a Party">🎉 Party</button>
+                        <button class="quick-action-btn" onclick="game.doActivity('dating')" title="Go on Date">💕 Date</button>
+                        <button class="quick-action-btn" onclick="game.doActivity('doctor')" title="Visit Doctor">👨‍⚕️ Doctor</button>
+                        <button class="quick-action-btn" onclick="game.doActivity('volunteer')" title="Volunteer">🤝 Help</button>
+                        <button class="quick-action-btn" onclick="game.doActivity('spa')" title="Spa Day">💆 Spa</button>
+                        <button class="quick-action-btn" onclick="game.doActivity('side_gig')" title="Side Gig">💼 Gig</button>
+                        <button class="quick-action-btn" onclick="game.doActivity('library')" title="Visit Library">📚 Library</button>
+                        <button class="quick-action-btn" onclick="game.doActivity('haircut')" title="Get Haircut">✂️ Hair</button>
+                    </div>
+                </div>
+
+                <!-- Life Timeline -->
+                <div class="card">
+                    <h3>📖 What's Happening in Your Life</h3>
+                    <div class="timeline-list" id="timelineListLife">
+                        <p class="timeline-item">✨ Your life begins...</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SCHOOL TAB -->
+            <section class="tab-content" data-tab="school">
+                <div class="card">
+                    <h2>🎓 School & Education</h2>
+                    <div class="info-grid">
+                        <div class="info-item">
+                            <span class="label">Education Level:</span>
+                            <span class="value" id="educationLevel">Elementary School</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="label">Smarts:</span>
+                            <div class="stat-bar-full">
+                                <div class="stat-bar-fill smarts" id="smartsBar" style="width: 50%"></div>
+                            </div>
+                            <span class="value" id="smartsValue">50</span>
+                        </div>
+                    </div>
+                    <p class="tab-description">Focus on your education to improve your smarts and unlock better career opportunities.</p>
+                    
+                    <h3 style="margin-top: 20px; margin-bottom: 12px;">📚 Activities</h3>
+                    <div class="activities-grid">
+                        <button class="activity-card" onclick="game.doActivity('study')">
+                            <div class="activity-icon">📖</div>
+                            <div class="activity-name">Study Hard</div>
+                            <div class="activity-effects">+15 Smarts<br>-10 Happiness</div>
+                        </button>
+                        <button class="activity-card" onclick="game.doActivity('tutoring')">
+                            <div class="activity-icon">👨‍🏫</div>
+                            <div class="activity-name">Get Tutoring</div>
+                            <div class="activity-effects">+20 Smarts<br>-500 $</div>
+                        </button>
+                        <button class="activity-card" onclick="game.doActivity('library')">
+                            <div class="activity-icon">📚</div>
+                            <div class="activity-name">Visit Library</div>
+                            <div class="activity-effects">+10 Smarts<br>+5 Happiness</div>
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- WORK TAB -->
+            <section class="tab-content" data-tab="work">
+                <div class="card">
+                    <h2>💼 Career & Work</h2>
+                    <div class="info-grid">
+                        <div class="info-item">
+                            <span class="label">Current Job:</span>
+                            <span class="value" id="jobName">Student</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="label">Salary:</span>
+                            <span class="value" id="salaryAmount">$0/year</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="label">Net Worth:</span>
+                            <span class="value" id="netWorth">$0</span>
+                        </div>
+                    </div>
+                    <p class="tab-description">Your career progress and income growth over your lifetime.</p>
+                    
+                    <h3 style="margin-top: 20px; margin-bottom: 12px;">💪 Activities</h3>
+                    <div class="activities-grid">
+                        <button class="activity-card" onclick="game.doActivity('work_overtime')">
+                            <div class="activity-icon">⏰</div>
+                            <div class="activity-name">Work Overtime</div>
+                            <div class="activity-effects">+2000 $<br>-15 Health</div>
+                        </button>
+                        <button class="activity-card" onclick="game.doActivity('ask_raise')">
+                            <div class="activity-icon">📈</div>
+                            <div class="activity-name">Ask for Raise</div>
+                            <div class="activity-effects">+5000 Salary<br>-5 Happiness</div>
+                        </button>
+                        <button class="activity-card" onclick="game.doActivity('side_gig')">
+                            <div class="activity-icon">🤝</div>
+                            <div class="activity-name">Side Gig</div>
+                            <div class="activity-effects">+1500 $<br>-10 Happiness</div>
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- HEALTH TAB -->
+            <section class="tab-content" data-tab="health">
+                <div class="card">
+                    <h2>❤️ Health & Fitness</h2>
+                    <div class="info-grid">
+                        <div class="info-item">
+                            <span class="label">Health:</span>
+                            <div class="stat-bar-full">
+                                <div class="stat-bar-fill health" id="healthBarCard" style="width: 100%"></div>
+                            </div>
+                            <span class="value" id="healthValueCard">100</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="label">Looks:</span>
+                            <div class="stat-bar-full">
+                                <div class="stat-bar-fill looks" id="looksBarCard" style="width: 50%"></div>
+                            </div>
+                            <span class="value" id="looksValueCard">50</span>
+                        </div>
+                    </div>
+                    <p class="tab-description">Take care of your health and looks to feel better and look good!</p>
+                    
+                    <h3 style="margin-top: 20px; margin-bottom: 12px;">🏋️ Activities</h3>
+                    <div class="activities-grid">
+                        <button class="activity-card" onclick="game.doActivity('gym')">
+                            <div class="activity-icon">🏋️</div>
+                            <div class="activity-name">Go to Gym</div>
+                            <div class="activity-effects">+20 Health<br>+15 Looks</div>
+                        </button>
+                        <button class="activity-card" onclick="game.doActivity('rest')">
+                            <div class="activity-icon">😴</div>
+                            <div class="activity-name">Get Rest</div>
+                            <div class="activity-effects">+25 Health<br>+10 Happiness</div>
+                        </button>
+                        <button class="activity-card" onclick="game.doActivity('doctor')">
+                            <div class="activity-icon">👨‍⚕️</div>
+                            <div class="activity-name">Visit Doctor</div>
+                            <div class="activity-effects">+30 Health<br>-1000 $</div>
+                        </button>
+                        <button class="activity-card" onclick="game.doActivity('healthy_eat')">
+                            <div class="activity-icon">🥗</div>
+                            <div class="activity-name">Eat Healthy</div>
+                            <div class="activity-effects">+10 Health<br>-500 $</div>
+                        </button>
+                        <button class="activity-card" onclick="game.doActivity('spa')">
+                            <div class="activity-icon">💆</div>
+                            <div class="activity-name">Spa Day</div>
+                            <div class="activity-effects">+20 Looks<br>+15 Happiness<br>-800 $</div>
+                        </button>
+                        <button class="activity-card" onclick="game.doActivity('haircut')">
+                            <div class="activity-icon">✂️</div>
+                            <div class="activity-name">Get Haircut</div>
+                            <div class="activity-effects">+15 Looks<br>-300 $</div>
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- RELATIONSHIPS TAB -->
+            <section class="tab-content" data-tab="relationships">
+                <div class="card">
+                    <h2>❤️ Relationships</h2>
+                    <div class="relationships-list" id="relationshipsList">
+                        <p class="empty-state">No relationships yet. Go make some friends!</p>
+                    </div>
+                    <div class="family-info">
+                        <h3>👨‍👩‍👧‍👦 Family</h3>
+                        <div class="info-grid">
+                            <div class="info-item">
+                                <span class="label">Spouse:</span>
+                                <span class="value" id="spouseInfo">None</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="label">Children:</span>
+                                <span class="value" id="childrenCount">0</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h3 style="margin-top: 20px; margin-bottom: 12px;">💕 Activities</h3>
+                    <div class="activities-grid">
+                        <button class="activity-card" onclick="game.doActivity('party')">
+                            <div class="activity-icon">🎉</div>
+                            <div class="activity-name">Throw a Party</div>
+                            <div class="activity-effects">+20 Happiness<br>+3 Friends<br>-1500 $</div>
+                        </button>
+                        <button class="activity-card" onclick="game.doActivity('dating')">
+                            <div class="activity-icon">💕</div>
+                            <div class="activity-name">Go on Date</div>
+                            <div class="activity-effects">+25 Happiness<br>-800 $</div>
+                        </button>
+                        <button class="activity-card" onclick="game.doActivity('volunteer')">
+                            <div class="activity-icon">🤝</div>
+                            <div class="activity-name">Volunteer</div>
+                            <div class="activity-effects">+15 Happiness<br>+2 Relationships</div>
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- STATS TAB -->
+            <section class="tab-content" data-tab="stats">
+                <div class="card">
+                    <h2>📊 Detailed Stats</h2>
+                    <div class="full-stats-grid">
+                        <div class="stat-block">
+                            <div class="stat-name">Health ❤️</div>
+                            <div class="stat-bar-full">
+                                <div class="stat-bar-fill health" id="healthFullBar" style="width: 100%"></div>
+                            </div>
+                            <div class="stat-value" id="healthValue">100/100</div>
+                        </div>
+                        <div class="stat-block">
+                            <div class="stat-name">Happiness 😊</div>
+                            <div class="stat-bar-full">
+                                <div class="stat-bar-fill happiness" id="happinessFullBar" style="width: 100%"></div>
+                            </div>
+                            <div class="stat-value" id="happinessValue">100/100</div>
+                        </div>
+                        <div class="stat-block">
+                            <div class="stat-name">Smarts 🧠</div>
+                            <div class="stat-bar-full">
+                                <div class="stat-bar-fill smarts" id="smartsFullBar" style="width: 50%"></div>
+                            </div>
+                            <div class="stat-value" id="smartsFullValue">50/100</div>
+                        </div>
+                        <div class="stat-block">
+                            <div class="stat-name">Looks 💅</div>
+                            <div class="stat-bar-full">
+                                <div class="stat-bar-fill looks" id="looksFullBar" style="width: 50%"></div>
+                            </div>
+                            <div class="stat-value" id="looksFullValue">50/100</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- MORE TAB -->
+            <section class="tab-content" data-tab="more">
+                <div class="card">
+                    <h2>📋 Life Actions</h2>
+                    <div class="action-buttons-grid">
+                        <button class="btn-action" id="saveGameBtn">💾 Save Game</button>
+                        <button class="btn-action" id="loadGameBtn">📂 Load Game</button>
+                        <button class="btn-action" id="newGameBtn">🆕 New Life</button>
+                        <button class="btn-action" id="achievementsBtn">🏆 Achievements</button>
+                    </div>
+                </div>
+
+                <!-- Timeline -->
+                <div class="card">
+                    <h2>📖 Life Timeline</h2>
+                    <div class="timeline-list" id="timelineList">
+                        <p class="timeline-item">✨ Your life begins...</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Settings Modal -->
+    <div class="modal" id="settingsModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Settings</h2>
+                <button class="btn-close" id="closeSettingsBtn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <label class="setting-item">
+                    <input type="checkbox" id="soundToggle" checked>
+                    Sound Effects
+                </label>
+                <label class="setting-item">
+                    <input type="checkbox" id="musicToggle" checked>
+                    Background Music
+                </label>
+            </div>
+        </div>
+    </div>
+
+    <!-- Character Creation Modal -->
+    <div class="modal" id="startModal">
+        <div class="modal-content modal-large">
+            <div class="modal-header">
+                <h2>Start Your Life</h2>
+            </div>
+            <div class="modal-body">
+                <label class="form-group">
+                    <span>Name:</span>
+                    <input type="text" id="characterNameInput" placeholder="Enter your name" value="Alex">
+                </label>
+                <label class="form-group">
+                    <span>Gender:</span>
+                    <select id="genderSelect">
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                        <option value="other">Other</option>
+                    </select>
+                </label>
+                <label class="form-group">
+                    <span>Country:</span>
+                    <select id="countrySelect">
+                        <option value="usa">United States</option>
+                        <option value="uk">United Kingdom</option>
+                        <option value="canada">Canada</option>
+                        <option value="australia">Australia</option>
+                        <option value="japan">Japan</option>
+                        <option value="brasil">Brazil</option>
+                        <option value="france">France</option>
+                    </select>
+                </label>
+                <label class="form-group">
+                    <span>Starting Traits (Select up to 4):</span>
+                    <div class="traits-grid">
+                        <label class="trait-option">
+                            <input type="checkbox" value="intelligent" class="trait-check">
+                            <span>🧠 Intelligent</span>
+                        </label>
+                        <label class="trait-option">
+                            <input type="checkbox" value="athletic" class="trait-check">
+                            <span>🏃 Athletic</span>
+                        </label>
+                        <label class="trait-option">
+                            <input type="checkbox" value="attractive" class="trait-check">
+                            <span>💅 Attractive</span>
+                        </label>
+                        <label class="trait-option">
+                            <input type="checkbox" value="wealthy" class="trait-check">
+                            <span>💰 Wealthy Family</span>
+                        </label>
+                    </div>
+                </label>
+                <button class="btn-primary btn-large" id="startGameBtn">Start Life</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="game-bitlife.js"></script>
+</body>
+</html>
