@@ -437,6 +437,29 @@ body {
     border-bottom: none;
 }
 
+/* ===== INFO TABS GRID ===== */
+.info-tabs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    gap: 10px;
+    margin-bottom: 16px;
+}
+
+.info-tab-item {
+    padding: 12px;
+    background: var(--bg-light);
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    font-size: 13px;
+    text-align: center;
+}
+
+.info-tab-item strong {
+    display: block;
+    margin-bottom: 4px;
+    color: var(--text-dark);
+}
+
 /* ===== QUICK ACTIONS ===== */
 .quick-actions-grid {
     display: grid;

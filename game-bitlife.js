@@ -666,6 +666,35 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
 
+        // Info/About
+        const infoBtn = document.getElementById('infoBtn');
+        if (infoBtn) {
+            infoBtn.addEventListener('click', () => {
+                document.getElementById('infoModal').classList.add('show');
+            });
+        }
+
+        const closeInfoBtn = document.getElementById('closeInfoBtn');
+        if (closeInfoBtn) {
+            closeInfoBtn.addEventListener('click', () => {
+                document.getElementById('infoModal').classList.remove('show');
+            });
+        }
+
+        // Copy Link
+        const copyLinkBtn = document.getElementById('copyLinkBtn');
+        if (copyLinkBtn) {
+            copyLinkBtn.addEventListener('click', () => {
+                const gameLink = document.getElementById('gameLink');
+                gameLink.select();
+                document.execCommand('copy');
+                copyLinkBtn.textContent = '✓ Copied!';
+                setTimeout(() => {
+                    copyLinkBtn.textContent = '📋 Copy';
+                }, 2000);
+            });
+        }
+
         // Close modals on background click
         window.addEventListener('click', (event) => {
             if (event.target.classList.contains('modal')) {
